@@ -15,6 +15,9 @@ class CreateVideogamesTable extends Migration
     {
         Schema::create('videogames', function (Blueprint $table) {
             $table->id();
+            $table -> string('titolo') -> notnullable();
+            $table-> text('sottotitolo')->nullable();
+            $table-> bigInteger('rating')-> unsigned();
             $table->timestamps();
         });
     }
