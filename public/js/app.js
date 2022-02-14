@@ -1916,9 +1916,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      videogames: []
+    };
+  },
   mounted: function mounted() {
-    console.log('hello');
+    var _this = this;
+
+    axios.get('/api/videogames/list').then(function (r) {
+      return _this.videogames = r.data;
+    })["catch"](function (e) {
+      return console.error(e);
+    });
   }
 });
 
@@ -37510,15 +37537,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "list" } }, [
+    _c("h1", [_vm._v("List of Videogames")]),
+    _vm._v(" "),
+    _c(
+      "table",
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.videogames, function (videogame, i) {
+          return _c("tr", { key: i }, [
+            _c("td", [_vm._v(_vm._s(videogame.titolo))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(videogame.sottotitolo))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(videogame.rating))]),
+          ])
+        }),
+      ],
+      2
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "list" } }, [
-      _c("h1", [_vm._v("asfasfaf")]),
+    return _c("tr", [
+      _c("th", [_vm._v("Titolo")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Sottotitolo")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Voto")]),
     ])
   },
 ]

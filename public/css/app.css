@@ -1,3 +1,15 @@
 * {
-    text-align: center;
+  text-align: center;
+  background-color: purple;
+}
+
+table {
+  margin: 0 auto;
+  color: white;
+}
+
+td, th, table {
+
+  border: 1px solid black;
+  background-color: red;
 }
