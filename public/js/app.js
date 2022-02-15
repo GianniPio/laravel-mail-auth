@@ -1963,9 +1963,10 @@ __webpack_require__.r(__webpack_exports__);
 
         if (videogame.id == id) {
           return x;
-        } // return -1;
-
+        }
       }
+
+      return -1;
     }
   },
   mounted: function mounted() {

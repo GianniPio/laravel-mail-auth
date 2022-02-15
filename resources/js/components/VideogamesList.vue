@@ -68,10 +68,9 @@ export default {
                 if (videogame.id == id) {
                     return x;
                 } 
-
-                // return -1;
-
             }
+            
+            return -1;
         }
  
     },
