@@ -16,3 +16,5 @@ Route::get('api/videogames/list', 'ApiController@getVideogames') -> name('api.vi
 Route::post('/login', 'Auth\LoginController@login') -> name('login');
 Route::post('/register', 'Auth\RegisterController@register') -> name('register');
 Route::get('/logout', 'Auth\LoginController@logout') -> name('logout');
+
+Route::get('api/videogame/delete/{id}', 'ApiController@deleteVideogame') -> name('api.videogame.delete');

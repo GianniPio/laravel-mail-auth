@@ -7,12 +7,18 @@
                 <th>Titolo</th>
                 <th>Sottotitolo</th>
                 <th>Voto</th>
+                <th v-if="user">Azione</th>
             </tr>
 
-            <tr v-for="videogame, i in videogames" :key= 'i'>
+            <tr v-for="videogame in videogames" :key= videogame>
                 <td>{{videogame.titolo}}</td>
                 <td>{{videogame.sottotitolo}}</td>
                 <td>{{videogame.rating}}</td>
+                <td v-if="user">
+                    <!-- <a class="btn btn-danger m-1" :href="`api/videogame/delete/${videogame.id}`">Elimina</a> -->
+                    <button @click="videogameDelete(videogame.id)" class="btn btn-danger m-1">Elimina</button>
+                    </td>
+
             </tr>
         </table>
 
@@ -33,6 +39,40 @@ export default {
             videogames: []
 
         };
+    },
+
+    props: {
+        user: String,
+    },
+
+    methods: {
+
+        videogameDelete(id) {
+
+            const self= this;
+            axios.get(`api/videogame/delete/${id}`)
+                .then(r => {
+
+                    const game = self.getIndexById(id);
+                    self.videogames.splice(game, 1);
+                })
+                .catch(e => console.log('e', e));
+        },
+
+        getIndexById(id) {
+
+            for( let x=0; x<this.videogames.length; x++) {
+                const videogame = this.videogames[x];
+
+                if (videogame.id == id) {
+                    return x;
+                } 
+
+                return -1;
+
+            }
+        }
+ 
     },
 
 

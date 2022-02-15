@@ -2,7 +2,7 @@
     <h1>Gamestop</h1>
 
     @auth
-        <h1>Bentornato nome</h1>
+        <h1>Bentornato {{Auth::user() -> name}}</h1>
 
         <a class="btn btn-danger" href="{{route('logout')}}">Logout</a>
     @else

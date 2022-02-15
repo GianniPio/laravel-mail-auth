@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-    <videogames-list></videogames-list>
+    <videogames-list user="{{Auth::check()}}"></videogames-list>
 @endsection
