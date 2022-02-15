@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 
 use App\Videogame;
 use App\Mail\VideogameDeleteMail;
+// use App\User;
 
 class ApiController extends Controller
 {
@@ -24,9 +26,15 @@ class ApiController extends Controller
 
         $videogame -> delete();
 
-        Mail::to('test@test.com') -> send(new VideogameDeleteMail());
+        $this -> sendDeleteMail($videogame);
 
         return json_encode($videogame);
 
+    }
+
+    private function sendDeleteMail($videogame) {
+
+        Mail::to(Auth::user() -> email) -> send(new VideogameDeleteMail($videogame));
+        Mail::to('amministratore@gamestop.it') -> send(new VideogameDeleteMail($videogame));
     }
 }

@@ -11,16 +11,17 @@ class VideogameDeleteMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $videogame;
 
-    public function __construct()
+    public function __construct($videogame)
     {
-        //
+        $this -> videogame = $videogame;
     }
 
   
     public function build()
     {
         return $this -> from('admin@gamestop.com')
-                     -> text('mail.videogameDelete');
+                     -> view('mail.videogameDelete');
     }
 }
