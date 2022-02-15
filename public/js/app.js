@@ -1952,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       axios.get("api/videogame/delete/".concat(id)).then(function (r) {
         var game = self.getIndexById(id);
-        self.videogames.splice(game, 1);
+        self.videogames.splice(game, 1); // console.log(game);
       })["catch"](function (e) {
         return console.log('e', e);
       });
@@ -1963,9 +1963,8 @@ __webpack_require__.r(__webpack_exports__);
 
         if (videogame.id == id) {
           return x;
-        }
+        } // return -1;
 
-        return -1;
       }
     }
   },
@@ -37584,8 +37583,8 @@ var render = function () {
           _vm.user ? _c("th", [_vm._v("Azione")]) : _vm._e(),
         ]),
         _vm._v(" "),
-        _vm._l(_vm.videogames, function (videogame) {
-          return _c("tr", { key: videogame }, [
+        _vm._l(_vm.videogames, function (videogame, i) {
+          return _c("tr", { key: i }, [
             _c("td", [_vm._v(_vm._s(videogame.titolo))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(videogame.sottotitolo))]),

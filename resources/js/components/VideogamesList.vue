@@ -10,7 +10,7 @@
                 <th v-if="user">Azione</th>
             </tr>
 
-            <tr v-for="videogame in videogames" :key= videogame>
+            <tr v-for="videogame, i in videogames" :key= i>
                 <td>{{videogame.titolo}}</td>
                 <td>{{videogame.sottotitolo}}</td>
                 <td>{{videogame.rating}}</td>
@@ -55,6 +55,7 @@ export default {
 
                     const game = self.getIndexById(id);
                     self.videogames.splice(game, 1);
+                    // console.log(game);
                 })
                 .catch(e => console.log('e', e));
         },
@@ -68,7 +69,7 @@ export default {
                     return x;
                 } 
 
-                return -1;
+                // return -1;
 
             }
         }
